@@ -16,7 +16,7 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "plugins": ["@typescript-eslint", "react", "prettier", "graphql"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "no-var": "warn",
@@ -27,12 +27,6 @@
       {
         "allowExpressions": true,
         "allowTypedFunctionExpressions": true
-      }
-    ],
-    "graphql/template-strings": [
-      "error",
-      {
-        "env": "literal"
       }
     ],
     "better-styled-components/sort-declarations-alphabetically": 2
