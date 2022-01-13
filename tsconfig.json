@@ -1,0 +1,88 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": [
+      "es6",
+      "es7",
+      "esnext",
+      "dom"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ],
+    "paths": {
+      "@types/*": [
+        "./@types/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
+      ],
+      "@graphql/*": [
+        "./graphql/*"
+      ],
+      "@views/*": [
+        "./views/*"
+      ],
+      "@viewsUi/*": [
+        "./views/ui/*"
+      ],
+      "@viewsComp/*": [
+        "./views/components/*"
+      ],
+      "@viewsLay/*": [
+        "./views/layouts/*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ],
+      "@server/*": [
+        "./server/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@static/*": [
+        "./public/static/*"
+      ]
+    },
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "out",
+    "next.config.js",
+    ".babelrc",
+    "bundles",
+    "coverage",
+    "test/*"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
