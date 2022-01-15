@@ -28,8 +28,7 @@
         "allowExpressions": true,
         "allowTypedFunctionExpressions": true
       }
-    ],
-    "better-styled-components/sort-declarations-alphabetically": 2
+    ]
   },
   "settings": {
     "import/resolver": {
