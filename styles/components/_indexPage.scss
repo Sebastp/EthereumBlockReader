@@ -5,7 +5,7 @@
 .indexPage {
   padding: 70px 50px;
 
-  .hero {
+  header {
     display: block;
     margin: auto;
     margin-bottom: 20px;
@@ -103,6 +103,10 @@
     }
   }
 
+  .sectionHeader.transactionsHeader {
+    margin-top: 80px;
+  }
+
   .dataSection {
     display: flex;
     margin: auto;
@@ -137,6 +141,35 @@
 
       &:not(:last-child) {
         border-right: 1px solid rgba(white, 0.4);
+      }
+    }
+
+    &.transactionsGrid {
+      display: block;
+      margin-top: 20px;
+
+      .listHeaders {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid white;
+
+        .dataCol {
+          padding: 17px 15px;
+          background-color: rgba(white, 0.06);
+          h2 {
+            text-transform: uppercase;
+            font-size: 12px;
+            display: block;
+            font-weight: $bold;
+            color: rgba(white, 0.6);
+          }
+        }
+      }
+
+      .listItemRow {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid rgba(white, 0.8);
       }
     }
   }

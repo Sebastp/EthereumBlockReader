@@ -15,6 +15,7 @@ const Home = () => {
 
   const subscribeToBlockchain = () => {
     console.log('subscribeToBlockchain')
+    setState('loading')
     subscription = web3.eth
       .subscribe('newBlockHeaders')
       .on('changed', (data) => {
@@ -32,7 +33,10 @@ const Home = () => {
         setBlock({
           ...blockObj,
           // difficulty: parseInt(blockObj.difficulty),
-          // transactions: blockObj.transactions,
+          //desc
+          transactions: blockObj.transactions.sort(
+            (a: any, b: any) => b.value - a.value
+          ),
         })
       })
       .on('error', (error) => {
@@ -61,11 +65,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="hero">
+      <header>
         <h1>
           Ethereum <span>block explorer</span>
         </h1>
-      </div>
+      </header>
 
       <div className="ctaSection">
         <button
@@ -81,7 +85,7 @@ const Home = () => {
           disabled={!['on', 'off'].includes(state)}
           className="ctaButton"
         >
-          {state == 'on' ? 'Pause' : 'Resume'}
+          {state == 'on' || 'loading' ? 'Pause' : 'Resume'}
         </button>
 
         <div className="state">
@@ -110,12 +114,43 @@ const Home = () => {
             </div>
           </section>
 
-          <section className="dataSection">
-            <div className="dataCol">
-              <h5>Block number</h5>
-              // <span>{block.from}</span>
-              to hash
+          <h1 className="sectionHeader transactionsHeader">Transactions</h1>
+          <section className="dataSection transactionsGrid">
+            <div className="listHeaders">
+              <div className="dataCol">
+                <h2>Hash</h2>
+              </div>
+              <div className="dataCol">
+                <h2>Ammount</h2>
+              </div>
+              <div className="dataCol">
+                <h2>Sender</h2>
+              </div>
+              <div className="dataCol">
+                <h2>Recipient</h2>
+              </div>
             </div>
+
+            <ul>
+              {block.transactions.map((transactionObj) => (
+                <li className="listItemRow">
+                  <div className="dataCol">
+                    <span>{transactionObj.hash}</span>
+                  </div>
+                  <div className="dataCol">
+                    <span>{web3.utils.fromWei(transactionObj.value)}</span>
+                  </div>
+
+                  <div className="dataCol">
+                    <span>{transactionObj.from}</span>
+                  </div>
+
+                  <div className="dataCol">
+                    <span>{transactionObj.to}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </section>
         </>
       ) : !block && state === 'loading' ? (
