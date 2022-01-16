@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Nav from '@views/components/Nav'
+import Loader from '@views/components/Loader'
 
 import { web3 } from '@lib/web3'
-import { BlockHeader } from 'web3-eth'
-
-interface BlockHeaderExtended extends BlockHeader {
-  difficulty?: string
-  transactionCount: number
-}
+import { BlockHeader, BlockTransactionObject } from 'web3-eth'
+// BlockTransationBase
 
 var subscription: any
 const Home = () => {
   const [state, setState] = useState<'on' | 'off' | 'loading' | 'error'>(
       'loading'
     ),
-    [block, setBlock] = useState<BlockHeaderExtended>()
+    [block, setBlock] = useState<BlockTransactionObject>()
 
   const subscribeToBlockchain = () => {
     console.log('subscribeToBlockchain')
@@ -28,14 +24,16 @@ const Home = () => {
       .on('data', async (blockHeader) => {
         console.log('data:newBlockHeaders:blockHeader', blockHeader)
 
-        const count: number = await web3.eth.getBlockTransactionCount(
-          blockHeader.hash
+        var blockObj: BlockTransactionObject = await web3.eth.getBlock(
+          blockHeader.hash,
+          true
         )
-        var transaction = web3.eth
-          .getTransactionFromBlock(blockHeader.hash)
-          .then(console.log)
         setState('on')
-        setBlock({ ...blockHeader, transactionCount: count })
+        setBlock({
+          ...blockObj,
+          // difficulty: parseInt(blockObj.difficulty),
+          // transactions: blockObj.transactions,
+        })
       })
       .on('error', (error) => {
         console.error('error:newBlockHeaders', error)
@@ -52,6 +50,10 @@ const Home = () => {
     }
   }, [web3])
 
+  useEffect(() => {
+    console.log(block)
+  }, [block])
+
   return (
     <div className="indexPage">
       <Head>
@@ -60,29 +62,12 @@ const Home = () => {
       </Head>
 
       <div className="hero">
-        <h1>Ethereum block explorer</h1>
+        <h1>
+          Ethereum <span>block explorer</span>
+        </h1>
       </div>
 
-      <section className="dataSection">
-        <div className="dataCol">
-          <h5>Block number</h5>
-          <span>{block ? block.number : ''}</span>
-        </div>
-        <div className="dataCol">
-          <h5>Number of transactions</h5>
-          <span>{block ? block.transactionCount : ''}</span>
-        </div>
-        <div className="dataCol">
-          <h5>Miner</h5>
-          <span>{block ? block.miner : ''}</span>
-        </div>
-        <div className="dataCol">
-          <h5>Total difficulty</h5>
-          <span>{block ? block.difficulty : ''}</span>
-        </div>
-      </section>
-
-      <div className="bottomCta">
+      <div className="ctaSection">
         <button
           onClick={() => {
             if (state == 'on') {
@@ -104,6 +89,38 @@ const Home = () => {
           <p className="state__name">{state}</p>
         </div>
       </div>
+      {block ? (
+        <>
+          <section className="dataSection">
+            <div className="dataCol">
+              <h5>Block number</h5>
+              <span>{block.number}</span>
+            </div>
+            <div className="dataCol">
+              <h5>Number of transactions</h5>
+              <span>{block.transactions.length}</span>
+            </div>
+            <div className="dataCol">
+              <h5>Miner</h5>
+              <span>{block.miner}</span>
+            </div>
+            <div className="dataCol">
+              <h5>Total difficulty</h5>
+              <span>{block.difficulty}</span>
+            </div>
+          </section>
+
+          <section className="dataSection">
+            <div className="dataCol">
+              <h5>Block number</h5>
+              // <span>{block.from}</span>
+              to hash
+            </div>
+          </section>
+        </>
+      ) : !block && state === 'loading' ? (
+        <Loader />
+      ) : null}
     </div>
   )
 }

@@ -7,4 +7,4 @@
 @import 'vendors/normalize';
 
 // Page-specific styles
-@import 'pages/index';
+@import 'components/indexPage', 'components/loader';

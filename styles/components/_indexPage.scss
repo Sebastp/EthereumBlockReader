@@ -8,53 +8,24 @@
   .hero {
     display: block;
     margin: auto;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     text-align: center;
-  }
 
-  .dataSection {
-    display: flex;
-    margin: auto;
-    border-radius: 10px;
-    border: 1px solid rgba(white, 0.4);
-    background: rgba(white, 0.02);
-    width: 700px;
-    flex-wrap: nowrap;
+    h1 {
+      font-size: 32px;
+      font-weight: $bold;
 
-    .dataCol {
-      display: block;
-      flex: 1;
-      max-width: 25%;
-      text-align: center;
-      padding: 10px 15px;
-
-      h5 {
-        display: block;
-        font-size: 14px;
-        font-weight: $semi-bold;
-        min-height: 2.2em;
-      }
       span {
-        display: block;
-        word-break: break-all;
-        font-size: 13px;
-        font-weight: $medium;
-        color: rgba(white, 0.7);
-        margin-top: 8px;
-      }
-
-      &:not(:last-child) {
-        border-right: 1px solid rgba(white, 0.4);
+        font-weight: $light;
       }
     }
   }
 
-  .bottomCta {
+  .ctaSection {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 
     .ctaButton {
       display: inline-block;
@@ -128,6 +99,44 @@
         color: rgba(white, 0.9);
         text-transform: capitalize;
         margin-left: 4px;
+      }
+    }
+  }
+
+  .dataSection {
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(white, 0.4);
+    background: rgba(white, 0.02);
+    width: 850px;
+    flex-wrap: nowrap;
+    margin-top: 80px;
+
+    .dataCol {
+      display: block;
+      flex: 1;
+      max-width: 25%;
+      text-align: center;
+      padding: 10px 15px 15px 15px;
+
+      h5 {
+        display: block;
+        font-size: 14px;
+        font-weight: $semi-bold;
+        // min-height: 2.2em;
+      }
+      span {
+        display: block;
+        word-break: break-all;
+        font-size: 13px;
+        font-weight: $medium;
+        color: rgba(white, 0.7);
+        margin-top: 8px;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid rgba(white, 0.4);
       }
     }
   }

@@ -1,0 +1,115 @@
+$bg-left: #485563;
+$bg-right: #29323c;
+$dot: #909090;
+$line: #f8f8f8;
+
+.loader {
+  height: 200px;
+  width: 100px;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+
+  .dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 52.5%;
+    height: 10px;
+    width: 10px;
+    background-color: $dot;
+    border-radius: 5rem;
+
+    &:nth-child(1) {
+      left: 0px;
+      animation: waveUp 2s, smallExtend 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    &:nth-child(2) {
+      left: 25px;
+      animation: waveUp 2s, largeExtend 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-delay: 0.15s;
+    }
+
+    &:nth-child(3) {
+      left: 50px;
+      animation: waveUp 2s, smallExtend 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(4) {
+      left: 75px;
+      animation: waveUp 2s, largeExtend 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-delay: 0.45s;
+    }
+
+    &:nth-child(5) {
+      left: 100px;
+      animation: waveUp 2s, smallExtend 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes waveUp {
+      0%,
+      15% {
+        top: 50%;
+      }
+      45%,
+      65% {
+        top: 42.5%;
+      }
+      85%,
+      100% {
+        top: 50%;
+      }
+    }
+
+    @keyframes smallExtend {
+      0%,
+      8% {
+        background-color: $dot;
+        height: 10px;
+      }
+      14%,
+      34% {
+        background-color: $line;
+        height: 23px;
+      }
+      46%,
+      100% {
+        background-color: $dot;
+        height: 10px;
+      }
+    }
+
+    @keyframes largeExtend {
+      0%,
+      8% {
+        background-color: $dot;
+        height: 10px;
+      }
+      14%,
+      34% {
+        background-color: $line;
+        height: 41px;
+      }
+      46%,
+      100% {
+        background-color: $dot;
+        height: 10px;
+      }
+    }
+  }
+}
