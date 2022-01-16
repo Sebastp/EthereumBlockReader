@@ -1,3 +1,134 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+
+.indexPage {
+  padding: 70px 50px;
+
+  .hero {
+    display: block;
+    margin: auto;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  .dataSection {
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(white, 0.4);
+    background: rgba(white, 0.02);
+    width: 700px;
+    flex-wrap: nowrap;
+
+    .dataCol {
+      display: block;
+      flex: 1;
+      max-width: 25%;
+      text-align: center;
+      padding: 10px 15px;
+
+      h5 {
+        display: block;
+        font-size: 14px;
+        font-weight: $semi-bold;
+        min-height: 2.2em;
+      }
+      span {
+        display: block;
+        word-break: break-all;
+        font-size: 13px;
+        font-weight: $medium;
+        color: rgba(white, 0.7);
+        margin-top: 8px;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid rgba(white, 0.4);
+      }
+    }
+  }
+
+  .bottomCta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .ctaButton {
+      display: inline-block;
+      padding: 10px 25px 12px 25px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: $semi-bold;
+      color: white;
+      position: relative;
+      cursor: pointer;
+      background-color: $primary1;
+      border: 1px solid rgba(white, 0.17);
+
+      &[disabled] {
+        cursor: default;
+        filter: grayscale(50);
+      }
+
+      &:hover:not([disabled]) {
+        background-color: darken($primary1, 4);
+        transition: background-color 0.25s;
+      }
+
+      &:active {
+        background-color: darken($primary1, 7);
+        transition: background-color 0.1s;
+      }
+    }
+
+    .state {
+      display: inline-block;
+      &__dot {
+        display: inline-block;
+        vertical-align: middle;
+        width: 7px;
+        height: 7px;
+        border-radius: 500px;
+        margin-left: 20px;
+
+        &.on {
+          background-color: #56e860;
+        }
+        &.off {
+          background-color: #858585;
+        }
+        &.loading {
+          @keyframes pulsate {
+            0%,
+            100% {
+              background-color: #f4b735;
+              box-shadow: 0 0 8px 1px #f4b735;
+            }
+
+            50% {
+              box-shadow: 0 0 5px 0px #ffe1a2;
+              background-color: #ffe1a2;
+            }
+          }
+
+          animation: pulsate 2s ease-in-out infinite;
+        }
+        &.error {
+          background-color: #f83e3f;
+        }
+      }
+
+      &__name {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: $medium;
+        color: rgba(white, 0.9);
+        text-transform: capitalize;
+        margin-left: 4px;
+      }
+    }
+  }
+}

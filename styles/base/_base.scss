@@ -3,7 +3,8 @@ html {
 }
 
 body {
-  color: $black;
+  color: white;
+  background: #0d1117;
   font-family: $poppins;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -17,15 +18,12 @@ body {
   margin: auto;
 }
 
-#__next{
+#__next {
   display: block;
   position: relative;
   min-height: 100vh;
   margin: 0 auto;
 }
-
-
-
 
 // =====================================================
 //    MEDIA QUERIES

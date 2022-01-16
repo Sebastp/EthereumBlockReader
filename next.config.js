@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const path = require("path");
 const withImages = require("next-images");
 
@@ -48,6 +48,10 @@ module.exports = withImages({
     sassOptions: {
       includePaths: [path.join(__dirname, "styles")],
     },
+  }
+  ,
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_INFURA_KEY: process.env.NEXT_PUBLIC_INFURA_KEY,
   }
 });
  
